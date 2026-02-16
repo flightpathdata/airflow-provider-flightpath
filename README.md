@@ -5,7 +5,7 @@
          width="60" />
     <img alt="FlightPath Server"
          src="assets/flightpath-server-icon.png"
-         width="60" />
+         width="80" style="max-width: 100%;position:relative;bottom:-7px"/>
   </a>
 </p>
 <h1 align="center">
