@@ -1,5 +1,11 @@
 <p align="center">
   <a href="https://www.airflow.apache.org">
+    <style>
+        img[alt="FlightPath Server"] {
+            position:relative;
+            bottom:-7px;
+        }
+    </style>
     <img alt="Airflow"
          src="https://cwiki.apache.org/confluence/download/attachments/145723561/airflow_transparent.png?api=v2"
          width="60" />
