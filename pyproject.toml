@@ -1,0 +1,50 @@
+[build-system]
+requires = [
+    "setuptools",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "airflow-provider-flightpath-server"
+authors = [
+    { name = "Gemini CLI", email = "gemini@google.com" },
+    { name = "Astronomer", email = "humans@astronomer.io" },
+]
+license = { text = "Apache License 2.0" }
+description = "An Apache Airflow provider for FlightPath Server, enabling integration with FlightPath Data projects."
+classifiers = [
+    "Framework :: Apache Airflow",
+    "Framework :: Apache Airflow :: Provider",
+]
+dynamic = [
+    "version"
+]
+requires-python = "~=3.8"
+dependencies = [
+    "apache-airflow>=2.4",
+    "requests",
+]
+
+[project.urls]
+Homepage = "https://www.flightpathdata.com"
+Source = "https://github.com/dk107dk/airflow-provider-flightpath/"
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.entry-points.apache_airflow_provider]
+provider_info = "flightpath_server_provider.__init__:get_provider_info"
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.dynamic]
+version = { attr = "flightpath_server_provider.__version__" }
+
+[tool.setuptools.packages.find]
+exclude = [
+    "*tests.*",
+    "*tests"
+]
