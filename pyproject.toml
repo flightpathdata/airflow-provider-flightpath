@@ -8,8 +8,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "airflow-provider-flightpath-server"
 authors = [
-    { name = "Gemini CLI", email = "gemini@google.com" },
-    { name = "Astronomer", email = "humans@astronomer.io" },
+    { name = "D. Kershaw", email = "dkershaw@atestaanalytics.com" },
+    {name = "CsvPath Contributors", email = "info@csvpath.org"}
 ]
 license = { text = "Apache License 2.0" }
 description = "An Apache Airflow provider for FlightPath Server, enabling integration with FlightPath Data projects."

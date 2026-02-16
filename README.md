@@ -12,14 +12,14 @@
 
 <br/>
 
-This repository provides an Apache Airflow provider for the FlightPath Server API, allowing you to orchestrate data preboarding tasks directly from your Airflow DAGs. It enables:
-- Registering new data files (CSV, Excel, JSONL).
-- Registering files and triggering FlightPath pipelines.
-- Pulling processed data from past runs.
+This repository provides an Apache Airflow provider for the [FlightPath Server API](https://www.flightpathdata.com), allowing you to orchestrate [CsvPath Framework](https://www.csvpath.org) data preboarding tasks directly from your Airflow DAGs. It enables:
+- Registering new data files (CSV, Excel, JSONL)
+- Registering files and immediately triggering FlightPath pipelines
+- Pulling processed data from past runs
 
 ## Formatting Standards
 
-The provider adheres to the following file structure:
+The provider follows the following file structure:
 
 ```bash
 ├── LICENSE
@@ -67,12 +67,12 @@ To install the FlightPath Server Provider, you can build it from source:
 
 Before using the operators, you need to configure an Airflow Connection for FlightPath Server:
 
-1.  In the Airflow UI, go to `Admin -> Connections`.
-2.  Click `+` to add a new connection.
-3.  Set `Conn Id` to `flightpath_server_default` (or your preferred ID).
-4.  Set `Conn Type` to `FlightPath Server`.
-5.  Set `Host` to the URL of your FlightPath Server (e.g., `http://localhost:8000`).
-6.  Set `Password` to your FlightPath Server API key.
+1.  In the Airflow UI, go to `Admin -> Connections`
+2.  Click `+` to add a new connection
+3.  Set `Conn Id` to `flightpath_server_default` (or your preferred ID)
+4.  Set `Conn Type` to `FlightPath Server`
+5.  Set `Host` to the URL of your FlightPath Server (e.g., `http://localhost:8000`)
+6.  Set `Password` to your FlightPath Server API project key
 
 ## Usage Examples
 
@@ -160,16 +160,7 @@ with DAG(
     )
 ```
 
-## Development Standards
-
-All modules must follow a specific set of best practices to optimize their performance with Airflow:
-
-- **All classes should always be able to run without access to the internet.** The Airflow Scheduler parses DAGs on a regular schedule. Every time that parse happens, Airflow will execute whatever is contained in the `init` method of your class. If that `init` method contains network requests, such as calls to a third party API, there will be problems due to repeated network calls.
-- **Init methods should never call functions which return valid objects only at runtime**. This will cause a fatal import error when trying to import a module into a DAG. A common best practice for referencing connectors and variables within DAGs is to use [Jinja Templating](https://airflow.apache.org/docs/apache-airflow/stable/concepts.html#jinja-templating).
-- **All operator modules need an `execute` method.** This method defines the logic that the operator will implement.
 
 ## Unit testing
 
-Your top-level `tests/` folder should include unit tests for all modules that exist in the repository. You can write tests in the framework of your choice, but the Astronomer team and Airflow community typically use [pytest](https://docs.pytest.org/en/stable/).
-
-You can test this package by running: `python3 -m unittest` from the top-level of the directory.
+You can run the unit tests with: `python3 -m unittest` from the top-level of the directory.

@@ -55,8 +55,6 @@ class FlightPathServerHook(BaseHook):
         try:
             if method == "POST":
                 response = requests.post(url, headers=self.headers, data=json.dumps(data))
-            elif method == "GET":
-                response = requests.get(url, headers=self.headers, params=data)
             else:
                 raise AirflowException(f"Unsupported HTTP method: {method}")
 
