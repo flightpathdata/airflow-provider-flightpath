@@ -2,13 +2,11 @@
   <a href="https://www.airflow.apache.org">
     <img alt="Airflow"
          src="https://cwiki.apache.org/confluence/download/attachments/145723561/airflow_transparent.png?api=v2"
-         width="60" />
-  </a> &nbsp;&nbsp;
+         width="60" /></a> &nbsp;&nbsp;
   <a href="https://www.flightpathdata.com">
     <img alt="FlightPath Server"
          src="assets/flightpath-server-icon-3.png"
-         width="62" />
-  </a>
+         width="62" /></a>
 </p>
 <h1 align="center">
   Airflow FlightPath Server Provider
