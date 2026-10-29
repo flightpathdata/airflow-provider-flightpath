@@ -12,14 +12,14 @@
   Airflow FlightPath Server Provider
 </h1>
   <h3 align="center">
-  An Apache Airflow provider for FlightPath Server, enabling seamless integration with FlightPath Data projects.
+  An Apache Airflow provider for FlightPath Server
 </h3>
 
 <br/>
 
 This repository provides an Apache Airflow provider for the [FlightPath Server API](https://www.flightpathdata.com).The provider enables you to orchestrate data preboarding runs in FlightPath directly from your Airflow DAGs.
 
-FlightPath is the low-code REST server that sits behind FlightPath Data and on top of [CsvPath Framework](https://www.csvpath.org). CsvPath Framework uses a data preboarding workflow that collects, stores, validates, and publishes data at the ingress point. Think of it as a governance-first data firewall that takes in untrusted data and publishes trusted data downstream.
+FlightPath is the low-code REST server that sits behind [FlightPath Data](https://www.flightpathdata.com) and on top of [CsvPath Framework](https://www.csvpath.org). CsvPath Framework uses a data preboarding workflow that collects, stores, validates, and publishes trustworthy data at the ingress point. Think of it as a governance-first data firewall that receives untrusted data and publishes trusted data to downstream consumers.
 
 At this time, the Airflow Provider only supports FlightPath Server API v1. Support for v2 is planned for Q1 2027.
 
