@@ -1,4 +1,4 @@
-from airflow.providers.flightpath_server.operators.flightpath_server import (
+from flightpath_server_provider.operators.flightpath_server import (
     FlightPathServerRegisterFileOperator,
     FlightPathServerRegisterAndRunOperator,
     FlightPathServerPullDataOperator,

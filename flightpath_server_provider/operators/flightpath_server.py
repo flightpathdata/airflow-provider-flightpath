@@ -4,7 +4,7 @@ import base64
 from typing import Any
 
 from airflow.models.baseoperator import BaseOperator
-from airflow.providers.flightpath_server.hooks.flightpath_server import FlightPathServerHook
+from flightpath_server_provider.hooks.flightpath_server import FlightPathServerHook
 
 
 class FlightPathServerRegisterFileOperator(BaseOperator):
