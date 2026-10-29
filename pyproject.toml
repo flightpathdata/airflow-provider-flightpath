@@ -6,7 +6,8 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "airflow-provider-flightpath-server"
+name = "flightpath-server-airflow-provider"
+version = "0.1.4"
 authors = [
     { name = "D. Kershaw", email = "dkershaw@atestaanalytics.com" },
     {name = "CsvPath Contributors", email = "info@csvpath.org"}
@@ -17,9 +18,6 @@ classifiers = [
     "Framework :: Apache Airflow",
     "Framework :: Apache Airflow :: Provider",
 ]
-dynamic = [
-    "version"
-]
 requires-python = "~=3.8"
 dependencies = [
     "apache-airflow>=2.4",
@@ -28,7 +26,7 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://www.flightpathdata.com"
-Source = "https://github.com/dk107dk/airflow-provider-flightpath/"
+Source = "https://github.com/flightpathdata/airflow-provider-flightpath"
 
 [project.readme]
 file = "README.md"

@@ -17,10 +17,21 @@
 
 <br/>
 
-This repository provides an Apache Airflow provider for the [FlightPath Server API](https://www.flightpathdata.com), allowing you to orchestrate [CsvPath Framework](https://www.csvpath.org) data preboarding tasks directly from your Airflow DAGs. It enables:
-- Registering new data files (CSV, Excel, JSONL)
-- Registering files and immediately triggering FlightPath pipelines
+This repository provides an Apache Airflow provider for the [FlightPath Server API](https://www.flightpathdata.com).The provider enables you to orchestrate data preboarding runs in FlightPath directly from your Airflow DAGs.
+
+FlightPath is the low-code REST server that sits behind FlightPath Data and on top of [CsvPath Framework](https://www.csvpath.org). CsvPath Framework uses a data preboarding workflow that collects, stores, validates, and publishes data at the ingress point. Think of it as a governance-first data firewall that takes in untrusted data and publishes trusted data downstream.
+
+At this time, the Airflow Provider only supports FlightPath Server API v1. Support for v2 is planned for Q1 2027.
+
+Currently the Provider enables:
+- Registering new data files (CSV, Excel, JSONL, XML, JSON)
+- Registering files and immediately triggering a FlightPath run
 - Pulling processed data from past runs
+
+All validation languages supported by your version of FlightPath are supported by the Provider.
+
+This version of the Provider does not provide a REST interface for validating dynamic data, it only supports files. The next version will support the FlightPath Server v2 API, including dynamically validating JSON, XML, or CSV payloads. In addition, ODCS, XSD, and JSON Schema validation.
+
 
 ## Formatting Standards
 
@@ -55,7 +66,7 @@ To install the FlightPath Server Provider, you can build it from source:
 
 1.  Clone this repository:
     ```bash
-    git clone https://github.com/dk107dk/airflow-provider-flightpath.git
+    git clone https://github.com/flightpathdata/airflow-provider-flightpath.git
     cd airflow-provider-flightpath
     ```
 2.  Build the wheel:
@@ -65,7 +76,7 @@ To install the FlightPath Server Provider, you can build it from source:
     ```
 3.  Install the wheel into your Airflow environment (replace `X.Y.Z` with the actual version number from the `dist/` directory):
     ```bash
-    pip install dist/airflow_provider_flightpath_server-X.Y.Z-py3-none-any.whl
+    pip install dist/flightpath_server_airflow_providerr-X.Y.Z-py3-none-any.whl
     ```
 
 ### Airflow Connection Setup
@@ -90,7 +101,7 @@ This operator registers a new CSV, Excel, or JSONL file with the FlightPath Serv
 ```python
 from airflow import DAG
 from datetime import datetime
-from airflow.providers.flightpath_server.operators.flightpath_server import FlightPathServerRegisterFileOperator
+from flightpath_airflow_provider.operators.flightpath_server import FlightPathServerRegisterFileOperator
 
 with DAG(
     dag_id='flightpath_register_file_example',
@@ -116,7 +127,7 @@ This operator registers a new file and immediately triggers a FlightPath pipelin
 ```python
 from airflow import DAG
 from datetime import datetime
-from airflow.providers.flightpath_server.operators.flightpath_server import FlightPathServerRegisterAndRunOperator
+from flightpath_airflow_provider.operators.flightpath_server import FlightPathServerRegisterAndRunOperator
 
 with DAG(
     dag_id='flightpath_register_and_run_example',
@@ -145,7 +156,7 @@ This operator retrieves the content of a file from a past FlightPath run and sav
 ```python
 from airflow import DAG
 from datetime import datetime
-from airflow.providers.flightpath_server.operators.flightpath_server import FlightPathServerPullDataOperator
+from flightpath_airflow_provider.operators.flightpath_server import FlightPathServerPullDataOperator
 
 with DAG(
     dag_id='flightpath_pull_data_example',

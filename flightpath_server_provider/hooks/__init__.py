@@ -1,1 +1,1 @@
-from airflow.providers.flightpath_server.hooks.flightpath_server import FlightPathServerHook
+from flightpath_server_provider.hooks.flightpath_server import FlightPathServerHook
